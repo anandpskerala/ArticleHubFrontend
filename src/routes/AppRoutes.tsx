@@ -3,6 +3,7 @@ import { useAppSelector, type RootState } from "../store";
 import { Route, Routes } from "react-router-dom";
 import { AuthRedirect } from "./AuthRedirect";
 import { ProtectedRoute } from "./ProtectedRoutes";
+import LoadingScreen from "../components/LoadingScreen";
 
 const SignUp = lazy(() => import("../pages/SignUpPage"));
 const Login = lazy(() => import("../pages/LoginPage"));
@@ -14,7 +15,7 @@ const AppRoutes = () => {
     const { user } = useAppSelector((state: RootState) => state.auth);
 
     return (
-        <Suspense fallback={<span>Loading..</span>}>
+        <Suspense fallback={<LoadingScreen />}>
              <Routes>
                 <Route element={<AuthRedirect user={user} />}>
                     <Route path="/signup" element={<SignUp />} />
