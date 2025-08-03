@@ -97,7 +97,7 @@ const LoginPage = () => {
 
                         <div className="lg:w-3/5 p-8 lg:p-12">
                             <div className="mb-8">
-                                <h2 className="text-2xl font-bold text-white mb-2">Create Account</h2>
+                                <h2 className="text-2xl font-bold text-white mb-2">Login</h2>
                                 <p className="text-gray-300">Fill in your details to get started</p>
                             </div>
 
