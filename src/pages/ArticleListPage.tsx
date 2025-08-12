@@ -48,8 +48,7 @@ const ArticleListPage = () => {
     const handleDeleteConfirm = async () => {
         if (deleteConfirmation.article) {
             try {
-                // Optional: Add API call to delete from server
-                // await axiosInstance.delete(`/articles/${deleteConfirmation.article.id}`);
+                await axiosInstance.delete(`/article/${deleteConfirmation.article.id}`);
                 
                 setArticles(prev => prev.filter(a => a.id !== deleteConfirmation.article!.id));
                 setDeleteConfirmation({ show: false, article: null });
@@ -158,7 +157,6 @@ const ArticleListPage = () => {
                     />
                 </div>
 
-                {/* Delete Confirmation Modal */}
                 {deleteConfirmation.show && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                         <div className="bg-gray-800 rounded-lg p-4 sm:p-6 max-w-md w-full">
