@@ -54,7 +54,6 @@ const ArticleListPage = () => {
                 setDeleteConfirmation({ show: false, article: null });
             } catch (error) {
                 console.error('Failed to delete article:', error);
-                // Handle error appropriately
             }
         }
     };

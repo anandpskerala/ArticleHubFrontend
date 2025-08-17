@@ -5,6 +5,7 @@ import type { User } from "../interfaces/entities/User";
 import { NavBar } from "./NavBar";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 export const ArticleEditPage: React.FC<{
     user?: User | null;
@@ -99,7 +100,8 @@ export const ArticleEditPage: React.FC<{
                 toast.error("Something went wrong");
             }
         } catch (err) {
-            toast.error("Failed to edit article")
+            const error = err instanceof AxiosError ? err.response?.data.message: "Failed to edit article";
+            toast.error(error)
             console.error('Failed to edit article:', err);
         }
     };

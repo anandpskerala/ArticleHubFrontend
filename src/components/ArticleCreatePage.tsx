@@ -5,6 +5,7 @@ import type { User } from "../interfaces/entities/User";
 import { NavBar } from "./NavBar";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 export const ArticleCreatePage: React.FC<{ user?: User | null; onSave: (article: Article) => void; onCancel: () => void }> = ({
     user,
@@ -107,7 +108,8 @@ export const ArticleCreatePage: React.FC<{ user?: User | null; onSave: (article:
                 toast.error("Something went wrong");
             }
         } catch (err) {
-            toast.error("Failed to create article")
+            const error = err instanceof AxiosError ? err.response?.data.message : "Failed to create article";
+            toast.error(error)
             console.error('Failed to create article:', err);
         }
     };
